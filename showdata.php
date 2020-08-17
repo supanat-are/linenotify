@@ -8,14 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
-<?php
-//inclued auth.php file on all secure pages
-include('auth.php');
-?>
 <body>
     <div class="form">
 
-        <P><a href="showdata.php">หน้าแจ้งเตือน</a></p>
+        <P><a href="show.php">ตารางบัญทึกข้อมูล</a></p>
         <a href="login.php">Logout</a>
     
     </div>
@@ -25,7 +21,7 @@ include('auth.php');
     $con ->set_charset("utf8");
 ?>
     <div class = "">
-    <H>ตารางรายการการร้องเรียนเหตุไฟฟ้าขัดข้อง</H>
+    <H>ข้อร้องเรียนไฟฟ้าขัดข้องล่าสุด</H>
     <table border="3" cellpadding="3" cellspacing = "3" >
     <tr >
 
@@ -37,12 +33,14 @@ include('auth.php');
 
     </tr>
     </div>
-
 <?php
-$sql = "SELECT * FROM users";
+
+
+
+$sql = "SELECT * FROM users ORDER BY trn_date DESC LIMIT 1";
 $result= $con->query($sql);
 if ($result->num_rows>0) {
-    while($row=$result->fetch_assoc()){ ?>
+    if($row=$result->fetch_assoc()){ ?>
     <tr>
 
         <td><?php echo $row["name"];?></td>
@@ -51,6 +49,9 @@ if ($result->num_rows>0) {
         <td><?php echo $row["data"];?></td>
         <td><?php echo $row["trn_date"];?></td>
 
+    
+
     </tr>
 <?php } 
 }?>
+

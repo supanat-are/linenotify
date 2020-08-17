@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     address varchar(50) NOT NULL,
     phone varchar(10) NOT NULL,
     data varchar(999) NOT NULL,
+    trn_date datetime NOT NULL,
     PRIMARY KEY (id)
 
 );
