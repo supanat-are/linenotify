@@ -28,13 +28,11 @@ a:hover{
 input[type="text"],
 input[type="email"],
 input[type="password"]{
-    width: 200px;
-    border-radius: 2px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    color: #333;
-    font-size: 14px;
-    margin-top: 10px;
+    border:1px solid #ccc;
+    width:200px;
+    padding:10px;
+    margin:5px 15px;
+    border-radius:5px;
 }
 
 input[type="submit"]{
@@ -52,4 +50,21 @@ input[type="submit"]{
 
 input[type="submit"]:hover{
     background-color: #024978;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 40%;
+}
+ 
+td, th {
+    border: 1px solid #5DADE2;
+    text-align: left;
+    padding: 8px;
+}
+ 
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

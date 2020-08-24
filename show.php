@@ -8,15 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
-<?php
-//inclued auth.php file on all secure pages
-include('auth.php');
-?>
+
+<center>
 <body>
     <div class="form">
 
-        <P><a href="showdata.php">หน้าแจ้งเตือน</a></p>
-        <a href="login.php">Logout</a>
+        <P><a href="showdata.php">ตารางบัญทึกข้อมูล</a></p>
+        <a href="logout.php">Logout</a>
     
     </div>
 </body>
@@ -24,25 +22,25 @@ include('auth.php');
     $con = mysqli_connect("localhost","root","","list");
     $con ->set_charset("utf8");
 ?>
-    <div class = "">
-    <H>ตารางรายการการร้องเรียนเหตุไฟฟ้าขัดข้อง</H>
+   <div class="from" >
+    <H1>ข้อร้องเรียนไฟฟ้าขัดข้องล่าสุด</H>
+</div>
     <table border="3" cellpadding="3" cellspacing = "3" >
     <tr >
 
-        <td><b>ชื่อ</b></td>
-        <td><b>ที่อยู่</b></td>
-        <td><b>เบอร์โทรศัพท์</b></td>
-        <td><b>หมายเหตุ</b></td>
-        <td><b>วันที่</b></td>
+        <th><b>ชื่อ</b></th>
+        <th><b>ที่อยู่</b></th>
+        <th><b>เบอร์โทรศัพท์</b></th>
+        <th><b>หมายเหตุ</b></th>
+        <th><b>วันที่</b></th>
 
     </tr>
-    </div>
-
 <?php
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM users ORDER BY trn_date DESC LIMIT 1";
 $result= $con->query($sql);
 if ($result->num_rows>0) {
-    while($row=$result->fetch_assoc()){ ?>
+    
+    if($row=$result->fetch_assoc()){ ?>
     <tr>
 
         <td><?php echo $row["name"];?></td>
@@ -51,6 +49,9 @@ if ($result->num_rows>0) {
         <td><?php echo $row["data"];?></td>
         <td><?php echo $row["trn_date"];?></td>
 
+    
+
     </tr>
 <?php } 
 }?>
+</center>

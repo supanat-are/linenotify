@@ -41,12 +41,12 @@
     ?>
             <div class="form">
                 <h1>Log in</h1>
-                <form action="" method="post" name="login">
+                <form action="line-notify.php" method="post" name="login">
                     <input type="text" name="username" placeholder="Username" require>
                     <input type="password" name="password" placeholder="Password" require>
                     <input type="submit" name="submit" value="Login">
                 </form>
-               <p>Not registered yet? <a href="registration.php">Register Here</a></P>
+                <p><a href="registration.php">Register Here</a></P>
             </div>
             <?php } ?>
 

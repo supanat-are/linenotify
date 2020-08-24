@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
+
+<center>
 <body>
     <div class="form">
 
-        <P><a href="show.php">ตารางบัญทึกข้อมูล</a></p>
-        <a href="login.php">Logout</a>
+        <P><a href="line-notify.php">หน้าแจ้งเตือน</a></p>
+        <a href="logout.php">Logout</a>
     
     </div>
 </body>
@@ -20,38 +22,40 @@
     $con = mysqli_connect("localhost","root","","list");
     $con ->set_charset("utf8");
 ?>
-    <div class = "">
-    <H>ข้อร้องเรียนไฟฟ้าขัดข้องล่าสุด</H>
+
+
+    <H>ตารางรายการการร้องเรียนเหตุไฟฟ้าขัดข้อง</H>
     <table border="3" cellpadding="3" cellspacing = "3" >
+        <thead>
     <tr >
-
-        <td><b>ชื่อ</b></td>
-        <td><b>ที่อยู่</b></td>
-        <td><b>เบอร์โทรศัพท์</b></td>
-        <td><b>หมายเหตุ</b></td>
-        <td><b>วันที่</b></td>
-
+        <th><b>ชื่อ</b></th>
+        <th><b>ที่อยู่</b></th>
+        <th><b>เบอร์โทรศัพท์</b></th>
+        <th><b>หมายเหตุ</b></th>
+        <th><b>วันที่</b></th>
+        <th><b>แก้ไกข้อมูล</b></th>  
     </tr>
-    </div>
+    <thead>
+
 <?php
-
-
-
-$sql = "SELECT * FROM users ORDER BY trn_date DESC LIMIT 1";
+$sql = "SELECT * FROM users";
 $result= $con->query($sql);
 if ($result->num_rows>0) {
-    if($row=$result->fetch_assoc()){ ?>
-    <tr>
 
+    while($row=$result->fetch_assoc()){ ?>
+    <tbody>
+    <tr>
+    
         <td><?php echo $row["name"];?></td>
         <td><?php echo $row["address"];?></td>
         <td><?php echo $row["phone"];?></td> 
         <td><?php echo $row["data"];?></td>
         <td><?php echo $row["trn_date"];?></td>
-
-    
+        <th><a href="delete.php?id=<?php echo $row["id"];?>">delete</a></th>
 
     </tr>
+    <tbody>
 <?php } 
-}?>
 
+}?>
+</center>
